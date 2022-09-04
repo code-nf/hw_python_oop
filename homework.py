@@ -10,7 +10,6 @@ class InfoMessage:
     distance: float
     speed: float
     calories: float
-    action: int
 
     def get_message(self) -> str:
         return (f'Тип тренировки: {self.training_type}; '
@@ -94,6 +93,7 @@ class SportsWalking(Training):
                 * self.HOURS_IN_MIN))
 
 
+@dataclass
 class Swimming(Training):
     """Тренировка: плавание."""
     LEN_STEP: ClassVar[float] = 1.38
