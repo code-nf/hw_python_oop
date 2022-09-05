@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import ClassVar, Dict, List
+from typing import ClassVar
 
 
 @dataclass
@@ -120,16 +120,18 @@ class Swimming(Training):
                 * self.weight)
 
 
-def read_package(workout_type: Dict[str, str], data: List[float]) -> Training:
+def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
     parameters_train = {
         'SWM': Swimming,
         'RUN': Running,
-        'WLK': SportsWalking}
+        'WLK': SportsWalking
+    }
     if workout_type in parameters_train:
         return parameters_train[workout_type](*data)
     else:
-        raise ValueError('Тренировка не найдена')
+        for i in parameters_train.keys():
+            print(f'Доступны следующие виды тренировки: {i}')
 
 
 def main(training: Training) -> None:
