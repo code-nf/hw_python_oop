@@ -130,8 +130,8 @@ def read_package(workout_type: str, data: list) -> Training:
     if workout_type in parameters_train:
         return parameters_train[workout_type](*data)
     else:
-        for i in parameters_train.keys():
-            print(f'Доступны следующие виды тренировки: {i}')
+        raise ValueError(f'Тренировка не найдена, доступные виды '
+                         f'тренировки: {list(parameters_train.keys())}')
 
 
 def main(training: Training) -> None:
